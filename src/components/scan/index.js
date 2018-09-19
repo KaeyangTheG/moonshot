@@ -33,7 +33,7 @@ class Scan extends React.Component {
     this.canvasEl.width = window.innerWidth
     this.canvasEl.height = window.innerHeight
 
-    webcam.initialize(this.videoEl)
+    webcam.initialize(this.videoEl, this.canvasEl)
       .then(() => {
         this.setState({showCamera: true})
       })
@@ -42,9 +42,7 @@ class Scan extends React.Component {
       })
   }
   setVideoRef = videoEl => this.videoEl = videoEl
-  setCanvasRef = canvasEl => {
-    this.canvasEl = canvasEl
-  }
+  setCanvasRef = canvasEl => this.canvasEl = canvasEl
   componentWillUnmount = () => {
     webcam.stop()
   }
