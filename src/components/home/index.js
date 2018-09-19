@@ -52,6 +52,7 @@ export const HomeContext = ({pose}) => (
   <Home animate={true}>
     <FadeContainer style={{width: '50vw', margin: 'auto'}}>
       <p>Help us recycle a can and bottle for every one we sell.</p>
+      <p><Link to="/instructions">Continue</Link></p>
     </FadeContainer>
   </Home>
 )

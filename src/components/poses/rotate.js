@@ -10,9 +10,9 @@ export const RotateContainer = posed.div({
     }
   },
   end: {
-    rotate: '180deg',
+    rotate: '200deg',
     transition: {
-      duration: 1000,
+      duration: 2000,
       delay: 400
     }
   }

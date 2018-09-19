@@ -1,0 +1,9 @@
+.viewfinder {
+  width: 60vw;
+  height: 60vw;
+  background: silver;
+}
+.page--full-screen {
+  width: 100vw;
+  height: 100vh;
+}

@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import {HomeLogo, HomeContext} from './components/home'
+import Instructions from './components/instructions'
+import Scan from './components/scan'
+import Educate from './components/educate'
 import './App.css'
 import posed, {PoseGroup} from 'react-pose';
 import { Route, Switch } from 'react-router-dom';
@@ -18,7 +21,10 @@ const rootRender = ({location}) => (
       <RoutesContainer key={location.key}>
         <Switch location={location}>
           <Route exact path="/" component={HomeLogo} key="home" />
-          <Route exact path="/mission" component={HomeContext} key="mission" />
+          <Route path="/mission" component={HomeContext} key="mission" />
+          <Route path="/instructions" component={Instructions} key="instructions" />
+          <Route path="/scan" component={Scan} key="scan" />
+          <Route path="/educate" component={Educate} key="educate" />
         </Switch>
       </RoutesContainer>
     </PoseGroup>
