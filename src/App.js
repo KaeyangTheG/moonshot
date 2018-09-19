@@ -11,27 +11,36 @@ import { Route, Switch } from 'react-router-dom';
 const RoutesContainer = posed.div({
   enter: {
     opacity: 1,
-    beforeChildren: true
+    beforeChildren: true,
+    delay: 300
   },
-  exit: { opacity: 1 }
+  exit: { opacity: ({opacityOnExit=0}) => opacityOnExit }
 });
 
-const rootRender = ({location}) => (
-  <div className="App">
-    <PoseGroup>
-      <RoutesContainer key={location.key}>
-        <Switch location={location}>
-          <Route exact path="/" component={HomeLogo} key="home" />
-          <Route path="/mission" component={HomeContext} key="mission" />
-          <Route path="/instructions" component={Instructions} key="instructions" />
-          <Route path="/scan" component={Scan} key="scan" />
-          <Route path="/no-scan" component={NoScan} key="no-scan" />
-          <Route path="/educate" component={Educate} key="educate" />
-        </Switch>
-      </RoutesContainer>
-    </PoseGroup>
-  </div>
+const getOpacityOnExit = path => (
+  path === '/mission' ? 1 : 0
 )
+
+const rootRender = ({location}) => {
+  console.log(location)
+  return (
+    <div className="App">
+      <PoseGroup>
+        <RoutesContainer opacityOnExit={getOpacityOnExit(location.pathname)}
+          key={location.key}>
+          <Switch location={location}>
+            <Route exact path="/" component={HomeLogo} key="home" />
+            <Route path="/mission" component={HomeContext} key="mission" />
+            <Route path="/instructions" component={Instructions} key="instructions" />
+            <Route path="/scan" component={Scan} key="scan" />
+            <Route path="/no-scan" component={NoScan} key="no-scan" />
+            <Route path="/educate" component={Educate} key="educate" />
+          </Switch>
+        </RoutesContainer>
+      </PoseGroup>
+    </div>
+  )
+}
 
 class App extends Component {
   render() {

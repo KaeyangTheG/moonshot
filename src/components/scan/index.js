@@ -14,25 +14,18 @@ const TranslateIn = posed.div({
   }
 })
 
-const Fadeout = posed.div({
-  visible: {
-    opacity: 1
+const Instructions = posed.p({
+  white: {
+    color: '#fff'
   },
-  hidden: {
-    opacity: 0
+  black: {
+    color: '#000'
   }
 })
-
-const Camera = props => (
-  <div></div>
-)
 
 class Scan extends React.Component {
   state = {showCamera: false}
   componentDidMount = () => {
-    this.canvasEl.width = window.innerWidth
-    this.canvasEl.height = window.innerHeight
-
     webcam.initialize(this.videoEl, this.canvasEl)
       .then(() => {
         this.setState({showCamera: true})
@@ -52,15 +45,16 @@ class Scan extends React.Component {
     return (
       <div className="scan" onClick={this.navigateToEducate}>
         <video ref={this.setVideoRef} style={{display: 'none'}}></video>
-        <Fadeout style={{transform: 'translateY(-5vh)'}} pose={
-          showCamera ? 'hidden' : 'visible'
-        }>
-          <p>Place your coke product within the viewfinder</p>
-        </Fadeout>
         <Viewfinder />
+        <Instructions style={{transform: 'translateY(5vh)'}} pose={
+          showCamera ? 'white' : 'black'
+        }>
+          Place your coke product within the viewfinder
+        </Instructions>
         <TranslateIn className="scan__camera"
           pose={showCamera ? 'visible' : 'hidden'}>
-          <canvas ref={this.setCanvasRef}></canvas>
+          <canvas width={window.innerWidth} height={window.innerHeight}
+            ref={this.setCanvasRef}></canvas>
         </TranslateIn>
       </div>
     )

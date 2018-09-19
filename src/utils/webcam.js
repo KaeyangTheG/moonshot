@@ -38,7 +38,7 @@ export default {
       const {width:canvasWidth, height:canvasHeight} = canvas;
 
       const canvasRatio = canvasWidth / canvasHeight;
-      const sWidth = videoWidth * canvasRatio;
+      const sWidth = videoHeight * canvasRatio;
       const sx = (videoWidth - sWidth) / 2;
       const sy = 0;
       const dx = 0;
