@@ -34,8 +34,17 @@ export default {
 
     function drawToCanvas () {
       const ctx = canvas.getContext('2d')
+      const {videoWidth, videoHeight} = video;
+      const {width:canvasWidth, height:canvasHeight} = canvas;
 
-      ctx.drawImage(video, 0,0, canvas.width, canvas.height);
+      const canvasRatio = canvasWidth / canvasHeight;
+      const sWidth = videoWidth * canvasRatio;
+      const sx = (videoWidth - sWidth) / 2;
+      const sy = 0;
+      const dx = 0;
+      const dy = 0;
+
+      ctx.drawImage(video, sx, sy, sWidth, videoHeight, dx, dy, canvasWidth, canvasHeight);
       setTimeout(drawToCanvas, 20)
     }
   }
