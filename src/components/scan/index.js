@@ -1,8 +1,9 @@
 import React from 'react'
 import posed from 'react-pose'
 import {Link} from 'react-router-dom'
-import './scan.css'
+import webcam from '../../utils/webcam'
 import {Viewfinder} from '../common/viewfinder'
+import './scan.css'
 
 const TranslateIn = posed.div({
   visible: {
@@ -23,32 +24,45 @@ const Fadeout = posed.div({
 })
 
 const Camera = props => (
-  <div className="scan__camera"></div>
+  <div></div>
 )
 
 class Scan extends React.Component {
   state = {showCamera: false}
   componentDidMount = () => {
-    setTimeout(() => {
-      this.props.history.push('/educate')
-    }, 5000 + Math.random() * 5000)
-    setTimeout(() => {
-      this.setState({showCamera: true})
-    }, 500)
+    this.canvasEl.width = window.innerWidth
+    this.canvasEl.height = window.innerHeight
+
+    webcam.initialize(this.videoEl)
+      .then(() => {
+        this.setState({showCamera: true})
+      })
+      .catch(() => {
+        this.props.history.push('/instructions')
+      })
   }
+  setVideoRef = videoEl => this.videoEl = videoEl
+  setCanvasRef = canvasEl => {
+    this.canvasEl = canvasEl
+  }
+  componentWillUnmount = () => {
+    webcam.stop()
+  }
+  navigateToEducate = () => this.props.history.push('/educate')
   render () {
     const { showCamera } = this.state
     return (
-      <div className="scan">
+      <div className="scan" onClick={this.navigateToEducate}>
+        <video ref={this.setVideoRef} style={{display: 'none'}}></video>
         <Fadeout style={{transform: 'translateY(-5vh)'}} pose={
           showCamera ? 'hidden' : 'visible'
         }>
           <p>Place your coke product within the viewfinder</p>
         </Fadeout>
         <Viewfinder />
-        <TranslateIn style={{position: 'absolute', top: 0, left: 0, zIndex: -1}}
+        <TranslateIn className="scan__camera"
           pose={showCamera ? 'visible' : 'hidden'}>
-          <Camera />
+          <canvas ref={this.setCanvasRef}></canvas>
         </TranslateIn>
       </div>
     )

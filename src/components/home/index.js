@@ -27,7 +27,6 @@ class Home extends React.Component {
     const { animate } = this.state;
     return (
       <div
-        onClick={() => console.log('hi')}
         style={{display: 'flex', width: '100vw', height: '100vh', position: 'relative'}}>
         {
           this.props.children

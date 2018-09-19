@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {HomeLogo, HomeContext} from './components/home'
 import Instructions from './components/instructions'
 import Scan from './components/scan'
+import NoScan from './components/no-scan'
 import Educate from './components/educate'
 import './App.css'
 import posed, {PoseGroup} from 'react-pose';
@@ -24,6 +25,7 @@ const rootRender = ({location}) => (
           <Route path="/mission" component={HomeContext} key="mission" />
           <Route path="/instructions" component={Instructions} key="instructions" />
           <Route path="/scan" component={Scan} key="scan" />
+          <Route path="/no-scan" component={NoScan} key="no-scan" />
           <Route path="/educate" component={Educate} key="educate" />
         </Switch>
       </RoutesContainer>
