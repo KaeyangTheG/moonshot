@@ -4,7 +4,7 @@ import {FadeContainer} from '../poses/fade'
 import {RotateContainer} from '../poses/rotate'
 import {Logo} from '../logo'
 import earth from '../../earth.svg';
-import '../common/common.css'
+import FullscreenPage from '../common/fullscreen'
 import './home.css'
 
 const earthStyle = {
@@ -27,14 +27,14 @@ class Home extends React.Component {
   render () {
     const { animate } = this.state;
     return (
-      <div className="page--full-screen home">
+      <FullscreenPage className="home">
         {
           this.props.children
         }
         <RotateContainer style={earthStyle} pose={animate ? 'start' : 'end'}>
           <img src={earth} alt="earth" style={{width: '120vw'}} />
         </RotateContainer>
-      </div>
+      </FullscreenPage>
     )
   }
 }
