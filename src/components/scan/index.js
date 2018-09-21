@@ -3,6 +3,7 @@ import posed from 'react-pose'
 import {Link} from 'react-router-dom'
 import webcam from '../../utils/webcam'
 import {Viewfinder} from '../common/viewfinder'
+import '../common/common.css'
 import './scan.css'
 
 const TranslateIn = posed.div({
@@ -43,7 +44,7 @@ class Scan extends React.Component {
   render () {
     const { showCamera } = this.state
     return (
-      <div className="scan" onClick={this.navigateToEducate}>
+      <div className="scan page--full-screen" onClick={this.navigateToEducate}>
         <video ref={this.setVideoRef} style={{display: 'none'}}></video>
         <Viewfinder />
         <Instructions style={{transform: 'translateY(5vh)'}} pose={

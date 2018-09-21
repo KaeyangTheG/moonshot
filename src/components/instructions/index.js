@@ -1,5 +1,6 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
+import '../common/common.css'
 import './instructions.css'
 import {Viewfinder} from '../common/viewfinder'
 import webcam from '../../utils/webcam.js'
@@ -17,7 +18,7 @@ class Instructions extends React.Component {
   }
   render () {
     return (
-      <div className="instructions">
+      <div className="page--full-screen instructions">
         <p style={{transform: 'translateY(-5vh)'}}>
           Place your coke product (Coca-cola, Coke Zero, Diet Coke cans) within the viewfinder.
         </p>

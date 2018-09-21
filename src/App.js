@@ -22,7 +22,6 @@ const getOpacityOnExit = path => (
 )
 
 const rootRender = ({location}) => {
-  console.log(location)
   return (
     <div className="App">
       <PoseGroup>
