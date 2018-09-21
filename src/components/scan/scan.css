@@ -4,13 +4,13 @@
   align-items: center;
   justify-content: center;
   height: 100vh;
+  background-color: #545454;
+  color: white;
   position: relative;
 }
 
 .scan__camera {
   position: absolute;
-  z-index: -1;
-  background: blue;
   left: 0;
   top: 0;
   width: 100%;

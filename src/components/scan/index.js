@@ -24,6 +24,11 @@ const Instructions = posed.p({
   }
 })
 
+const floatingStyle = {
+  position: 'absolute',
+  zIndex: 1
+}
+
 class Scan extends React.Component {
   state = {showCamera: false}
   componentDidMount = () => {
@@ -46,12 +51,10 @@ class Scan extends React.Component {
     return (
       <div className="scan page--full-screen" onClick={this.navigateToEducate}>
         <video ref={this.setVideoRef} style={{display: 'none'}}></video>
-        <Viewfinder />
-        <Instructions style={{transform: 'translateY(5vh)'}} pose={
-          showCamera ? 'white' : 'black'
-        }>
+        <Viewfinder style={{left: '10%', ...floatingStyle}}/>
+        <p style={{bottom: '10%', padding: '20px', ...floatingStyle}}>
           Place your coke product within the viewfinder
-        </Instructions>
+        </p>
         <TranslateIn className="scan__camera"
           pose={showCamera ? 'visible' : 'hidden'}>
           <canvas width={window.innerWidth} height={window.innerHeight}
