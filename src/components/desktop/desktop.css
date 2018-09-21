@@ -1,0 +1,12 @@
+.desktop {
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 10%;
+}
+
+.desktop > img {
+  width: 300px;
+}
