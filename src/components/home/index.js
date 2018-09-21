@@ -1,10 +1,11 @@
 import React from 'react'
-import posed from 'react-pose'
 import {Link} from 'react-router-dom'
 import {FadeContainer} from '../poses/fade'
 import {RotateContainer} from '../poses/rotate'
 import {Logo} from '../logo'
 import earth from '../../earth.svg';
+import '../common/common.css'
+import './home.css'
 
 const earthStyle = {
   position: 'absolute',
@@ -26,8 +27,7 @@ class Home extends React.Component {
   render () {
     const { animate } = this.state;
     return (
-      <div
-        style={{display: 'flex', width: '100vw', height: '100vh', position: 'relative'}}>
+      <div className="page--full-screen home">
         {
           this.props.children
         }
@@ -39,16 +39,32 @@ class Home extends React.Component {
   }
 }
 
-export const HomeLogo = ({pose}) => (
+const Sky = () => (
+  <div
+    style={{
+      zIndex: -1,
+      position: 'absolute',
+      top: 0,
+      left: 0,
+      width: '100%',
+      height: '100%',
+      background: '#70CDFB'
+    }}>
+    </div>
+)
+
+export const HomeLogo = ({history}) => (
   <Home>
-    <FadeContainer style={{width: '50vw', margin: 'auto'}} pose={pose}>
-      <Link to="/mission"><Logo /></Link>
+    <Sky />
+    <FadeContainer style={{width: '50vw', margin: 'auto'}}>
+        <Logo handleOnClick={() => history.push('/mission')}/>
     </FadeContainer>
   </Home>
 )
 
-export const HomeContext = ({pose}) => (
+export const HomeContext = () => (
   <Home animate={true}>
+    <Sky />
     <FadeContainer style={{width: '50vw', margin: 'auto'}}>
       <p>Help us recycle a can and bottle for every one we sell.</p>
       <p><Link to="/instructions">Continue</Link></p>

@@ -12,7 +12,8 @@ const RoutesContainer = posed.div({
   enter: {
     opacity: 1,
     beforeChildren: true,
-    delay: 300
+    delay: 300,
+    duration: 1000
   },
   exit: { opacity: ({opacityOnExit=0}) => opacityOnExit }
 });

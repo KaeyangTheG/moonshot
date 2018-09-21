@@ -1,8 +1,19 @@
 .viewfinder {
   width: 60vw;
   height: 60vw;
-  background: silver;
+  background-size: cover;
+  background-image: url('../../assets/images/view-finder-valid.png')
 }
+
+.button {
+  display: flex;
+  background: #00383f;
+  color: white;
+  justify-content: center;
+  align-items: center;
+  font-size: 150%;
+}
+
 .page--full-screen {
   width: 100vw;
   height: 100vh;
