@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom'
 import '../common/common.css'
 import './instructions.css'
 import {Viewfinder} from '../common/viewfinder'
+import Button from '../common/button'
 import webcam from '../../utils/webcam.js'
 
 class Instructions extends React.Component {
@@ -24,9 +25,8 @@ class Instructions extends React.Component {
         </p>
         <Viewfinder />
         <p>After detecting the object you will learn the proper way to dispose of it</p>
-        <div style={{position: 'absolute', bottom: 0}}>
-          <button onClick={this.startWebcam}>Got it</button>
-        </div>
+        <Button style={{position: 'absolute', bottom: 0, width: '100%'}}
+          handleOnClick={this.startWebcam} label="Got it" />
       </div>
     )
   }

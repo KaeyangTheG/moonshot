@@ -1,6 +1,6 @@
 .viewfinder {
-  width: 60vw;
-  height: 60vw;
+  width: 80vw;
+  height: 80vw;
   background-size: cover;
   background-image: url('../../assets/images/view-finder-valid.png')
 }
@@ -11,7 +11,10 @@
   color: white;
   justify-content: center;
   align-items: center;
-  font-size: 150%;
+  font-size: 140%;
+  padding: 16px;
+  font-weight: 600;
+  cursor: pointer;
 }
 
 .page--full-screen {
