@@ -57,7 +57,7 @@ export const HomeLogo = ({history}) => (
   <Home>
     <Sky />
     <FadeContainer style={{width: '50vw', margin: 'auto'}}>
-        <Logo handleOnClick={() => history.push('/mission')}/>
+      <Logo handleOnClick={() => history.push('/mission')}/>
     </FadeContainer>
   </Home>
 )

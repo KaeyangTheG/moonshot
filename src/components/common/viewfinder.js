@@ -4,6 +4,7 @@ import './common.css'
 export const Viewfinder = props => {
   return (
     <div style={props.style || {}} className="viewfinder">
+      {props.children}
     </div>
   )
 }
