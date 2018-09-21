@@ -12,14 +12,15 @@
   justify-content: center;
   align-items: center;
   font-size: 140%;
-  padding: 16px;
+  padding: 24px 16px;
   font-weight: 600;
   cursor: pointer;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .page--full-screen {
   width: 100vw;
-  height: 100vh;
+  height: 100%;
   box-sizing: border-box;
-  padding: 20px;
 }

@@ -4,7 +4,9 @@ import {FadeContainer} from '../poses/fade'
 import {RotateContainer} from '../poses/rotate'
 import {Logo} from '../logo'
 import earth from '../../earth.svg';
+import Button from '../common/button'
 import FullscreenPage from '../common/fullscreen'
+import webcam from '../../utils/webcam'
 import './home.css'
 
 const earthStyle = {
@@ -62,12 +64,22 @@ export const HomeLogo = ({history}) => (
   </Home>
 )
 
-export const HomeContext = () => (
+export const HomeContext = ({history}) => (
   <Home animate={true}>
     <Sky />
     <FadeContainer style={{width: '50vw', margin: 'auto'}}>
       <p>Help us recycle a can and bottle for every one we sell.</p>
-      <p><Link to="/instructions">Continue</Link></p>
+      <Button label="Continue" handleOnClick={
+        () => 
+        webcam.start()
+          .then(() => {
+            history.push('/scan')
+          })
+          .catch((e) => {
+            console.log(e)
+            history.push('/no-scan')
+          })
+      } />
     </FadeContainer>
   </Home>
 )

@@ -1,9 +1,9 @@
 import React from 'react'
 import './common.css'
 
-export default ({className, children}) => (
+export default ({className, children, style}) => (
   <div className={`page--full-screen ${className || ''}`}
-    style={{height: `${window.innerHeight}px`}}>
+    style={{...style, height: `${window.innerHeight}px`}}>
     {children}
   </div>
 )
