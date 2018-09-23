@@ -34,9 +34,7 @@ if (isMobile) {
   document.body.style.maxHeight = `${window.innerHeight}px`
 }
 
-const rootRender = (props) => {
-  console.log('rootRender', props)
-  const {location} = props
+const rootRender = ({location}) => {
   return (
     <div className="App">
       {

@@ -1,6 +1,7 @@
 import React from 'react'
 import webcam from '../../utils/webcam'
 import FullscreenPage from '../common/fullscreen'
+import Graph from '../common/graph'
 import './educate.css'
 
 class Educate extends React.Component {
@@ -13,6 +14,7 @@ class Educate extends React.Component {
             the energy used to make the original product.`
           }
         </p>
+        <Graph stroke="#E41E2A" pct={49} />
       </FullscreenPage>
     )
   }
