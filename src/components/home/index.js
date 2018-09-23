@@ -79,8 +79,7 @@ export const HomeContext = ({history}) => (
             history.push('/scan')
           })
           .catch((e) => {
-            console.log(e)
-            history.push('/no-scan')
+            history.push('/scan')
           })
       } />
     </FadeContainer>

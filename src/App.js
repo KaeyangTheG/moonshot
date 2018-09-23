@@ -8,6 +8,7 @@ import NoScan from './components/no-scan'
 import Educate from './components/educate'
 import Desktop from './components/desktop'
 import mobileCheck from './utils/mobile'
+import webcam from './utils/webcam'
 import './App.css'
 
 const RoutesContainer = posed.div({
@@ -33,7 +34,9 @@ if (isMobile) {
   document.body.style.maxHeight = `${window.innerHeight}px`
 }
 
-const rootRender = ({location}) => {
+const rootRender = (props) => {
+  console.log('rootRender', props)
+  const {location} = props
   return (
     <div className="App">
       {
@@ -45,8 +48,11 @@ const rootRender = ({location}) => {
               <Route exact path="/" component={HomeLogo} key="home" />
               <Route path="/mission" component={HomeContext} key="mission" />
               <Route path="/instructions" component={Instructions} key="instructions" />
-              <Route path="/scan" component={Scan} key="scan" />
-              <Route path="/no-scan" component={NoScan} key="no-scan" />
+              <Route path="/scan" key="scan"
+                render={
+                  (props) => webcam.stream ? <Scan {...props}/> : <NoScan {...props}/>
+                }
+              />
               <Route path="/educate" component={Educate} key="educate" />
             </Switch>
           </RoutesContainer>
