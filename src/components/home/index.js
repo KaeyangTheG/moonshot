@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom'
 import {FadeContainer} from '../poses/fade'
 import {RotateContainer} from '../poses/rotate'
 import {Logo} from '../logo'
-import earth from '../../earth.svg';
+import earth from '../../earth.png';
 import Button from '../common/button'
 import FullscreenPage from '../common/fullscreen'
 import webcam from '../../utils/webcam'
@@ -11,9 +11,12 @@ import './home.css'
 
 const earthStyle = {
   position: 'absolute',
-  left: '-10vw',
-  bottom: '-80vw'
+  left: '-75vw',
+  bottom: '-175vw',
+  zIndex: -1,
+  pointerEvents: 'none'
 }
+
 class Home extends React.Component {
   constructor (props) {
     super(props)
@@ -33,8 +36,8 @@ class Home extends React.Component {
         {
           this.props.children
         }
-        <RotateContainer style={earthStyle} pose={animate ? 'start' : 'end'}>
-          <img src={earth} alt="earth" style={{width: '120vw'}} />
+        <RotateContainer style={earthStyle} pose={animate ? 'end' : 'start'}>
+          <img src={earth} alt="earth" style={{width: '250vw', pointerEvents: 'none'}} />
         </RotateContainer>
       </FullscreenPage>
     )
@@ -58,7 +61,7 @@ const Sky = () => (
 export const HomeLogo = ({history}) => (
   <Home>
     <Sky />
-    <FadeContainer style={{width: '50vw', margin: 'auto'}}>
+    <FadeContainer style={{width: '50vw', paddingTop: '100px'}}>
       <Logo handleOnClick={() => history.push('/mission')}/>
     </FadeContainer>
   </Home>
@@ -67,10 +70,10 @@ export const HomeLogo = ({history}) => (
 export const HomeContext = ({history}) => (
   <Home animate={true}>
     <Sky />
-    <FadeContainer style={{width: '50vw', margin: 'auto'}}>
+    <FadeContainer style={{width: '50vw', paddingTop: '100px'}}>
       <p>Help us recycle a can and bottle for every one we sell.</p>
       <Button label="Continue" handleOnClick={
-        () => 
+        () =>
         webcam.start()
           .then(() => {
             history.push('/scan')

@@ -3,17 +3,13 @@ import posed from 'react-pose'
 
 export const RotateContainer = posed.div({
   start: {
-    rotate: '0deg',
+    rotate: '95deg',
+  },
+  end: {
+    rotate: '-5deg',
     transition: {
-      duration: 1000,
+      duration: 1200,
       delay: 400
     }
   },
-  end: {
-    rotate: '200deg',
-    transition: {
-      duration: 2000,
-      delay: 400
-    }
-  }
 })

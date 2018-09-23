@@ -14,10 +14,14 @@ const RoutesContainer = posed.div({
   enter: {
     opacity: 1,
     beforeChildren: true,
-    delay: 300,
-    duration: 1000
+    transition: {
+      delay: 300,
+      duration: 1000
+    }
   },
-  exit: { opacity: ({opacityOnExit=0}) => opacityOnExit }
+  exit: {
+    opacity: ({opacityOnExit}) => opacityOnExit,
+  }
 });
 
 const getOpacityOnExit = path => (
@@ -28,7 +32,6 @@ const isMobile = mobileCheck()
 if (isMobile) {
   document.body.style.maxHeight = `${window.innerHeight}px`
 }
-
 
 const rootRender = ({location}) => {
   return (
