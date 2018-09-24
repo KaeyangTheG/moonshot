@@ -49,7 +49,8 @@ const rootRender = ({location}) => {
                   (props) => webcam.stream ? <Scan {...props}/> : <NoScan {...props}/>
                 }
               />
-              <Route path="/educate" component={Educate} key="educate" />
+              <Route path="/educate" render={() => <Educate label="can" />}
+                key="educate" />
             </Switch>
           </RoutesContainer>
         </PoseGroup>

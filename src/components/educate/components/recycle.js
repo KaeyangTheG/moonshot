@@ -1,5 +1,6 @@
 import React from 'react'
 import Graph from '../../common/graph'
+import Triangle from '../../common/triangle'
 
 class Percentage extends React.Component {
   state = {animatedPct: 0}
@@ -26,9 +27,11 @@ class Percentage extends React.Component {
 export default ({pct}) => {
   return (
     <div className="recycle" style={{margin: 'auto'}}>
+
       <Graph size={window.innerWidth * 0.4} stroke="#E41E2A"
         background="#E69494" pct={pct} />
       <div className="recycle__stats">
+        <Triangle size={20} color="#D8D8D8" />
         <Percentage pct={pct} />
         <p>Recycled aluminum</p>
       </div>

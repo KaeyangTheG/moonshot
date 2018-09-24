@@ -29,3 +29,7 @@
   transform: rotate(-90deg);
   transform-origin: center;
 }
+.triangle {
+  width: 0;
+  height: 0; 
+}
