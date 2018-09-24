@@ -3,6 +3,7 @@ import webcam from '../../utils/webcam'
 import {capitalizePhrase} from '../../utils/formatting'
 import Recycle from './components/recycle'
 import {educateData, didYouKnowData} from './constants'
+import earth from '../../earth.svg'
 import './educate.css'
 
 const canDidYouKnowData = didYouKnowData['can']
@@ -55,6 +56,7 @@ const CanBody = () => (
 const EducateEpilogue = ({pledge}) => (
   <div className="educate__epilogue">
     <h2>{pledge}</h2>
+    <img src={earth} alt="logo" style={{width: '60%'}} />
   </div>
 )
 
