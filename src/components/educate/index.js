@@ -1,4 +1,6 @@
 import React from 'react'
+import {Subscribe} from 'unstated'
+import DetectionContainer from '../../context/detection-container'
 import webcam from '../../utils/webcam'
 import {capitalizePhrase} from '../../utils/formatting'
 import BloomContainer from '../poses/bloom'
@@ -51,4 +53,8 @@ class Educate extends React.Component {
   }
 }
 
-export default Educate
+export default props => (
+  <Subscribe to={[DetectionContainer]}>
+    {({state}) => <Educate label={state.label} />}
+  </Subscribe>
+)
