@@ -1,11 +1,16 @@
 import React from 'react'
 import {didYouKnowData} from '../constants'
 import {DidYouKnowItem, DidYouKnowText} from './did-you-know'
+import banana from '../../../assets/banana.svg'
 
 const canDidYouKnowData = didYouKnowData['banana']
 
 export default () => (
   <div>
+    <div>
+      <h3>Be a compostable CHAMP!</h3>
+      <img src={banana} alt="banana" style={{width: '40%'}} />
+    </div>
     <h3>Did you know?</h3>
     <p>
       {
