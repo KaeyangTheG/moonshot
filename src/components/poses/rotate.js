@@ -6,7 +6,7 @@ export const RotateContainer = posed.div({
     rotate: '95deg',
   },
   end: {
-    rotate: '-5deg',
+    rotate: '-8deg',
     transition: {
       duration: 1200,
       delay: 400
