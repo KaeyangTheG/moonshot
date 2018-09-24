@@ -1,6 +1,7 @@
 import React from 'react'
 import webcam from '../../utils/webcam'
 import {capitalizePhrase} from '../../utils/formatting'
+import BloomContainer from '../poses/bloom'
 import Recycle from './components/recycle'
 import {educateData, didYouKnowData} from './constants'
 import earth from '../../earth.svg'
@@ -63,9 +64,10 @@ const EducateEpilogue = ({pledge}) => (
 const EducateIntro = ({label, verdict, instructions, badge}) => {
   return (
     <div className="educate__intro">
-      <div style={{width: '50vw', margin: 'auto'}}>
+      <BloomContainer initialPose="start" pose="end"
+        style={{width: '50vw', margin: 'auto'}}>
         <img src={badge} alt={`${label}-badge`} />
-      </div>
+      </BloomContainer>
       <h2>{`${capitalizePhrase(label)} detected!`}</h2>
       <h3>
         {verdict}
