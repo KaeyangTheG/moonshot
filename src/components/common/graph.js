@@ -22,16 +22,18 @@ const Graph =
     pct=50,
     stroke='#00acc1',
     background='#efefef',
-    style={}
+    style={},
+    children
   }) => (
-  <svg style={style} className="circle-chart" viewBox="0 0 33.83098862 33.83098862"
+  <svg style={style} className="circle-chart" viewBox="0 0 35.83098862 35.83098862"
     width={size} height={size} xmlns="http://www.w3.org/2000/svg">
     <circle className="circle-chart__background" stroke={background}
-      strokeWidth="2" fill="none" cx="16.91549431" cy="16.91549431" r="15.91549431" />
+      strokeWidth="4" fill="none" cx="17.91549431" cy="17.91549431" r="15.91549431" />
     <AnimatedGraph className="circle-chart__circle" stroke={stroke}
       strokeWidth="2" initialPose="empty" pose="fill" pct={pct}
       strokeLinecap="round" fill="none"
-      cx="16.91549431" cy="16.91549431" r="15.91549431" />
+      cx="17.91549431" cy="17.91549431" r="15.91549431" />
+    {children}
   </svg>
 )
 

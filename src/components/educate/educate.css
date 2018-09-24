@@ -1,3 +1,21 @@
 .educate {
   display: flex;
 }
+
+.recycle {
+  width: 50vw;
+}
+
+.recycle__stats {
+  padding: 16px;
+  border-radius: 10%;
+  color: white;
+  background: #E69494;
+  position: relative;
+  top: -5px;
+}
+
+.recycle__stats > h1 {
+  font-size: 3em;
+  margin: 10px;
+}
