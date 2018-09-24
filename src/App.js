@@ -29,9 +29,6 @@ const getOpacityOnExit = path => (
 )
 
 const isMobile = mobileCheck()
-if (isMobile) {
-  document.body.style.maxHeight = `${window.innerHeight}px`
-}
 
 const rootRender = ({location}) => {
   return (
