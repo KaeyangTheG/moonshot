@@ -2,8 +2,25 @@ import React from 'react'
 import webcam from '../../utils/webcam'
 import {capitalizePhrase} from '../../utils/formatting'
 import Recycle from './components/recycle'
-import {educateData} from './constants'
+import {educateData, didYouKnowData} from './constants'
 import './educate.css'
+
+const canDidYouKnowData = didYouKnowData['can']
+
+const DidYouKnowItem = ({src, alt='dyk', children}) => (
+  <li style={{display: 'flex', marginBottom: '20px', justifyContent: 'space-between', alignItems: 'center'}}>
+    <div style={{width: '40%'}}>
+      <img src={src} alt={alt} style={{width: '80%'}} />
+    </div>
+    <div style={{width: '50%', textAlign: 'left'}}>
+      {children}
+    </div>
+  </li>
+)
+
+const DidYouKnowText = ({regular, bolded}) => (
+  <p>{regular}<br /><strong>{bolded}</strong></p>
+)
 
 const CanBody = () => (
   <div>
@@ -13,6 +30,24 @@ const CanBody = () => (
     </div>
     <div>
       <h3>Did you know?</h3>
+      <p>
+        {
+          `Recycled cans aren't just made into new cans?
+          By recycling just one can, you can help save enough
+          energy to power:`
+        }
+      </p>
+      <div>
+        <ul style={{padding: 0}}>
+          {
+            canDidYouKnowData.map(({regular, bolded, src}) => (
+              <DidYouKnowItem src={src}>
+                <DidYouKnowText regular={regular} bolded={bolded} />
+              </DidYouKnowItem>
+            ))
+          }
+        </ul>
+      </div>
     </div>
   </div>
 )

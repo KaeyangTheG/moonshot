@@ -27,7 +27,6 @@ class Percentage extends React.Component {
 export default ({pct}) => {
   return (
     <div className="recycle" style={{margin: 'auto'}}>
-
       <Graph size={window.innerWidth * 0.4} stroke="#E41E2A"
         background="#E69494" pct={pct} />
       <div className="recycle__stats">
