@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import posed, {PoseGroup} from 'react-pose';
 import { Route, Switch } from 'react-router-dom';
 import {HomeLogo, HomeContext} from './components/home'
-import Instructions from './components/instructions'
 import Scan from './components/scan'
 import NoScan from './components/no-scan'
 import Educate from './components/educate'
@@ -45,7 +44,6 @@ const rootRender = ({location}) => {
             <Switch location={location}>
               <Route exact path="/" component={HomeLogo} key="home" />
               <Route path="/mission" component={HomeContext} key="mission" />
-              <Route path="/instructions" component={Instructions} key="instructions" />
               <Route path="/scan" key="scan"
                 render={
                   (props) => webcam.stream ? <Scan {...props}/> : <NoScan {...props}/>
