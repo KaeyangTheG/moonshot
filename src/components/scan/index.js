@@ -56,7 +56,7 @@ class Scan extends React.Component {
   render () {
     const { showCamera, gotIt } = this.state
     return (
-      <FullscreenPage>
+      <FullscreenPage style={{background: "#545454"}}>
         <FullscreenPage className="scan"
           style={
             {

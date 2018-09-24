@@ -41,7 +41,8 @@ class Educate extends React.Component {
         <div className="educate__container">
           <EducateIntro {...data} />
           {
-            <BananaBody />
+            this.props.label === 'banana'
+              ? <BananaBody /> : <CanBody />
           }
           <EducateEpilogue pledge={data['pledge']}/>
         </div>
