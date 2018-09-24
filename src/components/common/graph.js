@@ -1,12 +1,15 @@
 import React from 'react'
 import posed from 'react-pose'
+import './common.css'
+
+const circumference = 392.6990816987241;
 
 const AnimatedGraph = posed.circle({
   empty: {
-    strokeDasharray: '0,100',
+    strokeDasharray: `0,${circumference}`,
   },
   fill: {
-    strokeDasharray: ({pct}) => `${pct},100`,
+    strokeDasharray: ({pct}) => `${(circumference / 100) * pct},${circumference}`,
     transition: {
       duration: 1000,
       delay: 1000,
@@ -16,25 +19,31 @@ const AnimatedGraph = posed.circle({
   }
 })
 
-const Graph =
-  ({
-    size='180',
-    pct=50,
-    stroke='#00acc1',
-    background='#efefef',
-    style={},
-    children
-  }) => (
-  <svg style={style} className="circle-chart" viewBox="0 0 35.83098862 35.83098862"
-    width={size} height={size} xmlns="http://www.w3.org/2000/svg">
-    <circle className="circle-chart__background" stroke={background}
-      strokeWidth="4" fill="none" cx="17.91549431" cy="17.91549431" r="15.91549431" />
-    <AnimatedGraph className="circle-chart__circle" stroke={stroke}
-      strokeWidth="2" initialPose="empty" pose="fill" pct={pct}
-      strokeLinecap="round" fill="none"
-      cx="17.91549431" cy="17.91549431" r="15.91549431" />
-    {children}
-  </svg>
-)
-
-export default Graph
+export default ({
+  size='180',
+  pct=50,
+  stroke='#E41E2A',
+  background='#E69494',
+  innerFill='#D8D8D8',
+  canFill='#E41E2B',
+  style={}
+}) => {
+  return (
+    <svg style={style} width={size} height={size} viewBox="0 0 125 125">
+      <g id="Page-1" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
+        <g id="Group" fillRule="nonzero">
+          <circle id="Oval" fill={background} cx="62.5" cy="62.5" r="62.5"></circle>
+          <AnimatedGraph className="circle-chart__circle" stroke={stroke}
+            pct={pct}
+            initialPose="empty"
+            pose="fill"
+            strokeWidth="6"
+            strokeLinecap="round" fill="none"
+            cx="62.5" cy="62.5" r="55" />
+          <circle id="Oval" fill={innerFill} cx="62.5" cy="62.5" r="47.5"></circle>
+          <path d="M77.5372648,38.8894815 C76.5905188,37.7321657 75.083803,35.3807832 75.083803,34.3738114 C75.0913331,33.7757758 75.1057089,33.6661916 75.1057089,33.6661916 C75.1057089,33.6661916 75.3918548,33.63345 75.3945931,33.4657328 C75.3966468,33.2980155 75.4267674,33 75.1488362,33 C74.8695358,33 62.7014877,33 62.7014877,33 C62.7014877,33 50.5334396,33 50.2548238,33 C49.9762081,33 50.0063287,33.2973473 50.0083824,33.4657328 C50.010436,33.63345 50.296582,33.6661916 50.296582,33.6661916 C50.296582,33.6661916 50.3116423,33.7757758 50.3191724,34.3738114 C50.3191724,35.3807832 48.8117721,37.7314975 47.8663952,38.8894815 C46.9196491,40.0461292 47.0017963,40.6882658 47.0017963,40.6882658 C47.0017963,40.6882658 47.0017963,86.2866444 47.0017963,86.8552794 C47.0017963,87.4245826 47.3153246,87.6791654 48.3846068,88.2117177 C49.4532045,88.7449383 50.0364493,90.2029425 50.2753606,90.6259107 C50.5149565,91.0488789 50.8319076,90.998096 50.8319076,90.998096 L62.7028568,90.998096 L74.573806,90.998096 C74.573806,90.998096 74.8914417,91.0488789 75.1296685,90.6259107 C75.3692644,90.2029425 75.9518246,88.7449383 77.0211068,88.2117177 C78.0897045,87.6791654 78.4032328,87.4239144 78.4032328,86.8552794 C78.4032328,86.2866444 78.4032328,40.6882658 78.4032328,40.6882658 C78.4032328,40.6882658 78.4833263,40.0467974 77.5372648,38.8894815 Z" id="Shape" fill={canFill}></path>
+        </g>
+      </g>
+    </svg>
+  )
+}
