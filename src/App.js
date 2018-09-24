@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import {Provider, Subscribe} from 'unstated'
+import DetectionContainer from './context/detection-container'
 import posed, {PoseGroup} from 'react-pose';
 import { Route, Switch } from 'react-router-dom';
 import {HomeLogo, HomeContext} from './components/home'
@@ -45,7 +47,15 @@ const rootRender = ({location}) => {
                   (props) => webcam.stream ? <Scan {...props}/> : <NoScan {...props}/>
                 }
               />
-              <Route path="/educate" render={() => <Educate label="banana" />}
+              <Route path="/educate" render={
+                () => {
+                  return (
+                    <Subscribe to={[DetectionContainer]}>
+                      {(detection) => <Educate label={detection.state.label} />}
+                    </Subscribe>
+                  )
+                }
+              }
                 key="educate" />
             </Switch>
           </RoutesContainer>
@@ -62,7 +72,9 @@ const rootRender = ({location}) => {
 class App extends Component {
   render() {
     return (
-      <Route render={rootRender} />
+      <Provider>
+        <Route render={rootRender} />
+      </Provider>
     );
   }
 }
