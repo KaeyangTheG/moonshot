@@ -45,7 +45,7 @@ const rootRender = ({location}) => {
                   (props) => webcam.stream ? <Scan {...props}/> : <NoScan {...props}/>
                 }
               />
-              <Route path="/educate" render={() => <Educate label="banana" />}
+              <Route path="/educate" render={() => <Educate label="coke_zero" />}
                 key="educate" />
             </Switch>
           </RoutesContainer>

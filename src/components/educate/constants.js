@@ -7,16 +7,21 @@ import water from '../../assets/water.svg'
 import canBadge from '../../assets/images/can-badge.png'
 import bananaBadge from '../../assets/images/banana-badge.png'
 
+const canData = {
+  label: `Aluminum can`,
+  verdict: `You can recycle it!`,
+  instructions: `Be sure to place your
+    can in a recycling bin or recycling center
+    nearby.`,
+  pledge: `Help take the pledge to recycle every can you see.`,
+  badge: canBadge
+}
+
 export const educateData = {
-  can: {
-    label: `Aluminum can`,
-    verdict: `You can recycle it!`,
-    instructions: `Be sure to place your
-      can in a recycling bin or recycling center
-      nearby.`,
-    pledge: `Help take the pledge to recycle every can you see.`,
-    badge: canBadge
-  },
+  'can_other': canData,
+  'coke_zero': {...canData, label: `Coke zero can`},
+  'diet_coke': {...canData, label: `Diet coke can`},
+  coke: {...canData, label: `Coca-cola can`},
   banana: {
     label: 'Banana',
     verdict: `You can compost it!`,
