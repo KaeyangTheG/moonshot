@@ -1,6 +1,7 @@
 import tv from '../../assets/tv.svg'
 import microwave from '../../assets/microwave.svg'
 import lightbulb from '../../assets/lightbulb.svg'
+import canBadge from '../../assets/images/can-badge.png'
 
 export const educateData = {
   can: {
@@ -9,7 +10,8 @@ export const educateData = {
     instructions: `Be sure to place your
       can in a recycling bin or recycling center
       nearby.`,
-    pledge: `Help take the pledge to recycle every can you see.`
+    pledge: `Help take the pledge to recycle every can you see.`,
+    badge: canBadge
   }
 }
 

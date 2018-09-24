@@ -1,6 +1,6 @@
 .educate {
   padding: 16px;
-  padding-top: 40px;
+  padding-top: 80px;
   background: #70CDFB;
   min-height: 100vh;
   overflow: auto;
@@ -12,9 +12,23 @@
   padding: 16px;
 }
 
+.educate__container > * {
+  position: relative;
+  top: -15vw;
+}
+
 .educate__intro > h3 {
   color: #4A90E2;
   font-weight: 900;
+}
+
+.educate__intro > h3,
+.educate__intro > h2 {
+  margin: 5px 0;
+}
+
+.educate__intro > p {
+  margin: 15px 0;
 }
 
 .recycle {

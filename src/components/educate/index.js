@@ -58,9 +58,12 @@ const EducateEpilogue = ({pledge}) => (
   </div>
 )
 
-const EducateIntro = ({label, verdict, instructions}) => {
+const EducateIntro = ({label, verdict, instructions, badge}) => {
   return (
     <div className="educate__intro">
+      <div style={{width: '50vw', margin: 'auto'}}>
+        <img src={badge} alt={`${label}-badge`} />
+      </div>
       <h2>{`${capitalizePhrase(label)} detected!`}</h2>
       <h3>
         {verdict}
