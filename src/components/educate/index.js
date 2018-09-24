@@ -14,7 +14,7 @@ class Educate extends React.Component {
             the energy used to make the original product.`
           }
         </p>
-        <Graph stroke="#E41E2A" pct={49} />
+        <Graph size={window.innerWidth * 2} stroke="#E41E2A" pct={49} />
       </FullscreenPage>
     )
   }
