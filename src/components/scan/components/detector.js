@@ -3,7 +3,7 @@ import React from 'react'
 const COUNTER_INTERVAL = 1000
 
 class Detector extends React.Component {
-  state = {counter: 5}
+  state = {counter: 3}
   componentDidMount () {
     this.interval = setInterval(this.updateCounter, COUNTER_INTERVAL)
   }
