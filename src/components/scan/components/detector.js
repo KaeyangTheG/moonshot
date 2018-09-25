@@ -1,4 +1,5 @@
 import React from 'react'
+import sharedDetectionContainer from '../../../context/detection-container'
 import Banana from '../../common/banana'
 import Can from '../../common/can'
 
@@ -17,7 +18,8 @@ class Detector extends React.Component {
       ({counter}) => ({counter: counter - 1}),
       () => {
         if (this.state.counter < 1) {
-          this.props.onCountDownEnd()
+          sharedDetectionContainer.setDetected(this.props.label)
+            .then(this.props.onCountDownEnd)
         }
       }
     )
