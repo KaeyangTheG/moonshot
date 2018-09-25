@@ -59,9 +59,9 @@ class Scan extends React.Component {
     predict.stop()
     webcam.stop()
   }
-  componentDidUpdate = () => {
+  componentDidUpdate = (prevProps, prevState) => {
     const {showCamera, gotIt} = this.state
-    if (showCamera && gotIt) {
+    if (showCamera && gotIt && !(prevState.showCamera && prevState.gotIt)) {
       predict.start(this.predictionCanvasEl)
     }
   }
@@ -115,8 +115,8 @@ class Scan extends React.Component {
           width="224" height="224"
           ref={this.setPredictionCanvasRef}></canvas>
         {
-          gotIt &&
-            <Detector label={label} onCountDownEnd={
+          gotIt && label &&
+            <Detector key={label} label={label} onCountDownEnd={
               () => history.push('/educate')
             } />
         }
