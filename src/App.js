@@ -37,14 +37,14 @@ const rootRender = ({location}) => {
         isMobile &&
         <PoseGroup>
           <RoutesContainer opacityOnExit={getOpacityOnExit(location.pathname)}
-            key={location.key}>
+            key={location.pathname}>
             <Switch location={location}>
               <Route exact path="/" component={HomeLogo} key="home" />
               <Route path="/mission" component={HomeContext} key="mission" />
               <Route path="/scan" key="scan"
                 render={
                   (props) =>
-                    webcam.stream ? <Scan {...props}/> : <NoScan {...props}/>
+                    webcam.stream ? <Scan {...props} /> : <NoScan {...props} />
                 }
               />
               <Route path="/educate" component={Educate} key="educate" />

@@ -108,10 +108,13 @@ class Scan extends React.Component {
   }
 }
 
-export default props => (
-  <Subscribe to={[DetectionContainer]}>
-    {
-      ({setLabel}) => <Scan {...props} setLabel={setLabel} />
-    }
-  </Subscribe>
-)
+export default props => {
+  console.log('test', props)
+  return (
+    <Subscribe to={[DetectionContainer]}>
+      {
+        ({setLabel}) => <Scan {...props} setLabel={setLabel} />
+      }
+    </Subscribe>
+  )
+}
