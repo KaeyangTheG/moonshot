@@ -5,6 +5,7 @@ import posed from 'react-pose'
 import {Link} from 'react-router-dom'
 import webcam from '../../utils/webcam'
 import predict from '../../utils/predict'
+import {safariCheck} from '../../utils/mobile'
 import FullscreenPage from '../common/fullscreen'
 import {Viewfinder} from '../common/viewfinder'
 import Button from '../common/button'
@@ -12,6 +13,8 @@ import Detector from './components/detector'
 import can from '../../assets/images/can.png'
 import '../common/common.css'
 import './scan.css'
+
+const isSafari = safariCheck()
 
 const TranslateIn = posed.div({
   visible: {
@@ -21,6 +24,8 @@ const TranslateIn = posed.div({
     translateY: '100vh'
   }
 })
+
+const NoOp = posed.div({})
 
 const FloatingCan = posed.div({
   visible: {
@@ -69,6 +74,7 @@ class Scan extends React.Component {
   render () {
     const { showCamera, gotIt } = this.state
     const {label, history} = this.props
+    const VideoCanvas = isSafari ? NoOp : TranslateIn
     return (
       <FullscreenPage style={{background: "#545454"}}>
         <FullscreenPage className="scan"
@@ -80,7 +86,11 @@ class Scan extends React.Component {
               top: 0,
               left: 0
             }}>
-          <video ref={this.setVideoRef} style={{display: 'none'}}></video>
+          <video ref={this.setVideoRef}
+            autoPlay={true}
+            playsInline={true}
+            muted={true}
+            style={{ visibility: 'hidden', position: 'fixed' }} />
           <Viewfinder style={{zIndex: 3}}>
             <FloatingCan style={floatingCanStyle}
               pose={gotIt ? 'hidden' : 'visible'}>
@@ -102,15 +112,20 @@ class Scan extends React.Component {
                   }
                 }
                 handleOnClick={
-                  () => this.setState({gotIt: true})
+                  () => {
+                    if (isSafari) {
+                      this.videoEl.play()
+                    }
+                    this.setState({gotIt: true})
+                  }
                 } />
           }
         </FullscreenPage>
-        <TranslateIn className="scan__camera"
+        <VideoCanvas className="scan__camera"
           pose={showCamera ? 'visible' : 'hidden'}>
           <canvas width={window.innerWidth} height={window.innerHeight}
             ref={this.setCanvasRef}></canvas>
-        </TranslateIn>
+        </VideoCanvas>
         <canvas style={{display: 'none'}}
           width="224" height="224"
           ref={this.setPredictionCanvasRef}></canvas>

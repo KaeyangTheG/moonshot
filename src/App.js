@@ -7,7 +7,7 @@ import Scan from './components/scan'
 import NoScan from './components/no-scan'
 import Educate from './components/educate'
 import Desktop from './components/desktop'
-import mobileCheck from './utils/mobile'
+import {mobileCheck} from './utils/mobile'
 import webcam from './utils/webcam'
 import './App.css'
 

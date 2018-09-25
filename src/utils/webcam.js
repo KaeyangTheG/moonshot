@@ -1,5 +1,7 @@
 import {webCamOptions} from '../constants'
 
+const RENDER_INTERVAL = 42;
+
 export default {
   stream: null,
   draw: null,
@@ -26,11 +28,10 @@ export default {
       return Promise.reject(new Error(`no stream from which to initialize webcam.
         Try resolving start() first`))
     }
-    return new Promise(resolve => {
+    return new Promise((resolve, reject) => {
       video.srcObject = this.stream
       video.onloadedmetadata = e => {
-        video.play()
-        video.addEventListener('play', drawToCanvas)
+        setTimeout(drawToCanvas, RENDER_INTERVAL)
         resolve()
       }
     })
@@ -58,7 +59,7 @@ export default {
       ctxP.drawImage(video, sxP, syP, imgSize, imgSize, 0, 0, imgSize, imgSize);
 
       if (video.srcObject && video.srcObject.active) {
-        setTimeout(drawToCanvas, 20)
+        setTimeout(drawToCanvas, RENDER_INTERVAL)
       }
     }
   }
