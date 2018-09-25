@@ -5,7 +5,7 @@ import Can from '../../common/can'
 const COUNTER_INTERVAL = 1000
 
 class Detector extends React.Component {
-  state = {counter: 3}
+  state = {counter: 2}
   componentDidMount () {
     this.interval = setInterval(this.updateCounter, COUNTER_INTERVAL)
   }
@@ -32,10 +32,8 @@ class Detector extends React.Component {
   render () {
     const {label} = this.props
     const isBanana = label === 'banana'
-    const Silhouette = isBanana
-      ? Banana
-      : Can
-    const stroke = isBanana ? '#CCFF15' : '#DD0048'
+    const Silhouette = isBanana ? Banana : Can
+
     return (
       <div style={{
         position: 'absolute',
@@ -45,7 +43,7 @@ class Detector extends React.Component {
         bottom: 0
       }}>
         {
-          <Silhouette stroke="#fff" size={150} />
+          <Silhouette stroke="#fff" size={150}/>
         }
       </div>
     )
