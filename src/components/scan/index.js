@@ -38,15 +38,15 @@ const floatingCanStyle = {
 }
 
 class Scan extends React.Component {
-  state = {showCamera: false, gotIt: false}
+  state = {showCamera: false, gotIt: false, interval: null}
   componentDidMount = () => {
-    webcam.initialize(this.videoEl, this.canvasEl)
+    webcam.initialize(this.videoEl, this.canvasEl, this.predictionCanvasEl)
       .then(() => {
         this.setState({showCamera: true})
-        setTimeout(() => {
-          sharedDetectionContainer.setLabel('diet_coke')
-            .then(this.navigateToEducate)
-        }, 5000)
+        // setTimeout(() => {
+        //   sharedDetectionContainer.setLabel('diet_coke')
+        //     .then(this.navigateToEducate)
+        // }, 5000)
       })
       .catch(() => {
         this.props.history.push('/')
@@ -54,6 +54,8 @@ class Scan extends React.Component {
   }
   setVideoRef = videoEl => this.videoEl = videoEl
   setCanvasRef = canvasEl => this.canvasEl = canvasEl
+  setPredictionCanvasRef = predictionCanvasEl =>
+    this.predictionCanvasEl = predictionCanvasEl
   componentWillUnmount = () => {
     webcam.stop()
   }
@@ -102,6 +104,9 @@ class Scan extends React.Component {
           <canvas width={window.innerWidth} height={window.innerHeight}
             ref={this.setCanvasRef}></canvas>
         </TranslateIn>
+        <canvas style={{display: 'none'}}
+          width="224" height="224"
+          ref={this.setPredictionCanvasRef}></canvas>
       </FullscreenPage>
     )
   }

@@ -21,7 +21,7 @@ export default {
       this.stream = null;
     }
   },
-  initialize: function (video, canvas) {
+  initialize: function (video, canvas, predictionCanvas) {
     if (!this.stream) {
       return Promise.reject(new Error(`no stream from which to initialize webcam.
         Try resolving start() first`))
@@ -37,6 +37,8 @@ export default {
 
     function drawToCanvas () {
       const ctx = canvas.getContext('2d')
+      const ctxP = predictionCanvas.getContext('2d')
+
       const {videoWidth, videoHeight} = video;
       const {width:canvasWidth, height:canvasHeight} = canvas;
 
@@ -48,6 +50,13 @@ export default {
       const dy = 0;
 
       ctx.drawImage(video, sx, sy, sWidth, videoHeight, dx, dy, canvasWidth, canvasHeight);
+
+      const imgSize = 224;
+      const sxP = (videoWidth - imgSize) / 2;
+      const syP = (videoHeight - imgSize) / 2;
+
+      ctxP.drawImage(video, sxP, syP, imgSize, imgSize, 0, 0, imgSize, imgSize);
+
       if (video.srcObject && video.srcObject.active) {
         setTimeout(drawToCanvas, 20)
       }
