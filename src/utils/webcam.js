@@ -2,6 +2,7 @@ import {webCamOptions} from '../constants'
 
 export default {
   stream: null,
+  draw: null,
   start: function (options={}) {
     return getUserMedia({...webCamOptions, ...options})
       .then(stream => {
@@ -16,7 +17,9 @@ export default {
       this.stream.getTracks()[0].stop();
       this.stream = null;
     }
-    catch(e) {}
+    catch(e) {
+      this.stream = null;
+    }
   },
   initialize: function (video, canvas) {
     if (!this.stream) {
@@ -45,7 +48,9 @@ export default {
       const dy = 0;
 
       ctx.drawImage(video, sx, sy, sWidth, videoHeight, dx, dy, canvasWidth, canvasHeight);
-      setTimeout(drawToCanvas, 20)
+      if (video.srcObject && video.srcObject.active) {
+        setTimeout(drawToCanvas.bind(this), 20)
+      }
     }
   }
 }

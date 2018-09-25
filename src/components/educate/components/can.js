@@ -24,7 +24,7 @@ export default () => (
         <ul style={{padding: 0}}>
           {
             canDidYouKnowData.map(({regular, bolded, src}) => (
-              <DidYouKnowItem src={src}>
+              <DidYouKnowItem src={src} key={src}>
                 <DidYouKnowText regular={regular} bolded={bolded} />
               </DidYouKnowItem>
             ))
