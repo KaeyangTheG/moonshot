@@ -4,6 +4,10 @@ import sharedDetectionContainer from '../context/detection-container'
 const API_INTERVAL = 700;
 const IMAGE_QUALITY = 1.0;
 
+const processDataUrl = str => (
+  `/${str.split('/').slice(2).join('/')}`
+)
+
 const predict = (image) => {
   return axios.post('/api/predict', {image}, {
     header: {
@@ -33,6 +37,6 @@ export default {
 
 function fetchPrediction (canvas) {
   const imageDataURL = canvas.toDataURL('image/jpeg', IMAGE_QUALITY);
-  return predict(imageDataURL)
+  return predict(processDataUrl(imageDataURL))
     .then(({data}) => console.log(data))
 }
