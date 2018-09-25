@@ -1,6 +1,7 @@
 import React from 'react'
 import {Subscribe} from 'unstated'
 import sharedDetectionContainer from '../../context/detection-container'
+import sharedGotItContainer from '../../context/got-it-container'
 import posed from 'react-pose'
 import {Link} from 'react-router-dom'
 import webcam from '../../utils/webcam'
@@ -47,14 +48,23 @@ const floatingCanStyle = {
 }
 
 class Scan extends React.Component {
-  state = {showCamera: false, gotIt: false}
+  constructor (props) {
+    super(props)
+    this.state = {
+      showCamera: false,
+      gotIt : props.gotIt
+    }
+  }
   componentDidMount = () => {
-    webcam.initialize(this.videoEl, this.canvasEl, this.predictionCanvasEl)
+    sharedDetectionContainer.reset()
       .then(() => {
-        this.setState({showCamera: true})
-      })
-      .catch(() => {
-        this.props.history.push('/')
+        webcam.initialize(this.videoEl, this.canvasEl, this.predictionCanvasEl)
+          .then(() => {
+            this.setState({showCamera: true})
+          })
+          .catch(() => {
+            this.props.history.push('/')
+          })
       })
   }
   setVideoRef = videoEl => this.videoEl = videoEl
@@ -102,7 +112,7 @@ class Scan extends React.Component {
             </FloatingCan>
           </Viewfinder>
           <p style={{padding: '20px'}}>
-            Place your Coca-cola product within the viewfinder
+            Place your Coca-cola product within the frame
           </p>
           {
             !gotIt &&
@@ -119,6 +129,7 @@ class Scan extends React.Component {
                     if (isSafari) {
                       this.videoEl.play()
                     }
+                    sharedGotItContainer.setGotIt(true)
                     this.setState({gotIt: true})
                   }
                 } />

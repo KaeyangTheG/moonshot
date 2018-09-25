@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import DetectionContainer from './context/detection-container'
+import sharedGotItContainer from './context/got-it-container'
 import posed, {PoseGroup} from 'react-pose';
 import { Route, Switch } from 'react-router-dom';
 import {HomeLogo, HomeContext} from './components/home'
@@ -44,7 +44,10 @@ const rootRender = ({location}) => {
               <Route path="/scan" key="scan"
                 render={
                   (props) =>
-                    webcam.stream ? <Scan {...props} /> : <NoScan {...props} />
+                    webcam.failed
+                      ? <NoScan {...props} />
+                      : <Scan {...props}
+                        gotIt={sharedGotItContainer.state.gotIt} />
                 }
               />
               <Route path="/educate" component={Educate} key="educate" />

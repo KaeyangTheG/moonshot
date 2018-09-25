@@ -4,11 +4,15 @@ const RENDER_INTERVAL = 42;
 
 export default {
   stream: null,
-  draw: null,
+  failed: null,
   start: function (options={}) {
     return getUserMedia({...webCamOptions, ...options})
       .then(stream => {
         this.stream = stream
+      })
+      .catch((e) => {
+        this.failed = true
+        throw new Error(e)
       });
   },
   stop: function () {
@@ -25,8 +29,8 @@ export default {
   },
   initialize: function (video, canvas, predictionCanvas) {
     if (!this.stream) {
-      return Promise.reject(new Error(`no stream from which to initialize webcam.
-        Try resolving start() first`))
+      return this.start()
+        .then(this.initialize.bind(this, video, canvas, predictionCanvas))
     }
     return new Promise((resolve, reject) => {
       video.srcObject = this.stream

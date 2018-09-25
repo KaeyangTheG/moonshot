@@ -1,4 +1,3 @@
-import React from 'react'
 import {Container} from 'unstated'
 
 class DetectionContainer extends Container {
@@ -14,6 +13,7 @@ class DetectionContainer extends Container {
     return this.setState({label});
   }
   setDetected = detected => this.setState({detected})
+  reset = () => this.setState({detected: '', label: ''})
 }
 
 const sharedDetectionContainer = new DetectionContainer()
