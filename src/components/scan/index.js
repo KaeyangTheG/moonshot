@@ -3,6 +3,7 @@ import sharedDetectionContainer from '../../context/detection-container'
 import posed from 'react-pose'
 import {Link} from 'react-router-dom'
 import webcam from '../../utils/webcam'
+import predict from '../../utils/predict'
 import FullscreenPage from '../common/fullscreen'
 import {Viewfinder} from '../common/viewfinder'
 import Button from '../common/button'
@@ -38,7 +39,7 @@ const floatingCanStyle = {
 }
 
 class Scan extends React.Component {
-  state = {showCamera: false, gotIt: false, interval: null}
+  state = {showCamera: false, gotIt: false}
   componentDidMount = () => {
     webcam.initialize(this.videoEl, this.canvasEl, this.predictionCanvasEl)
       .then(() => {
@@ -57,7 +58,14 @@ class Scan extends React.Component {
   setPredictionCanvasRef = predictionCanvasEl =>
     this.predictionCanvasEl = predictionCanvasEl
   componentWillUnmount = () => {
+    predict.stop()
     webcam.stop()
+  }
+  componentDidUpdate = () => {
+    const {showCamera, gotIt} = this.state
+    if (showCamera && gotIt) {
+      predict.start(this.predictionCanvasEl)
+    }
   }
   navigateToEducate = () => this.props.history.push('/educate')
   render () {

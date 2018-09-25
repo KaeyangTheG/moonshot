@@ -2,14 +2,15 @@ import axios from 'axios'
 import sharedDetectionContainer from '../context/detection-container'
 
 const API_INTERVAL = 700;
+const IMAGE_QUALITY = 1.0;
 
-const predict = (image) =>
+const predict = (image) => {
   return axios.post('/api/predict', {image}, {
     header: {
       'Content-Type': 'application/json'
     }
   })
-)
+}
 
 export default {
   interval: null,
@@ -18,7 +19,7 @@ export default {
       return
     }
     this.interval = window.setInterval(
-      fetchPrediction.bind(canvas), API_INTERVAL
+      fetchPrediction.bind(null, canvas), API_INTERVAL
     )
   },
   stop: function () {
@@ -31,7 +32,7 @@ export default {
 }
 
 function fetchPrediction (canvas) {
-  const imageDataURL = canvas.toDataURL('image/jpeg', 0.5);
+  const imageDataURL = canvas.toDataURL('image/jpeg', IMAGE_QUALITY);
   return predict(imageDataURL)
     .then(({data}) => console.log(data))
 }
