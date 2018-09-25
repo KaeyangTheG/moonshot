@@ -1,4 +1,6 @@
 import React from 'react'
+import Banana from '../../common/banana'
+import Can from '../../common/can'
 
 const COUNTER_INTERVAL = 1000
 
@@ -29,17 +31,22 @@ class Detector extends React.Component {
   }
   render () {
     const {label} = this.props
+    const isBanana = label === 'banana'
+    const Silhouette = isBanana
+      ? Banana
+      : Can
+    const stroke = isBanana ? '#CCFF15' : '#DD0048'
     return (
       <div style={{
         position: 'absolute',
         width: '100vw',
-        height: '5vh',
-        background: 'white',
         textAlign: 'center',
         zIndex: 1,
         bottom: 0
       }}>
-        {`${this.props.label} ${this.getCounter()}`}
+        {
+          <Silhouette stroke="#fff" size={150} />
+        }
       </div>
     )
   }
