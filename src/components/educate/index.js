@@ -55,6 +55,6 @@ class Educate extends React.Component {
 
 export default props => (
   <Subscribe to={[DetectionContainer]}>
-    {({state}) => <Educate label={state.label} />}
+    {({state}) => <Educate label={state.label || 'banana'} />}
   </Subscribe>
 )

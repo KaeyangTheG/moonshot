@@ -3,9 +3,13 @@ import {Container} from 'unstated'
 
 class DetectionContainer extends Container {
   state = {
-    label: 'banana'
+    label: ''
   }
   setLabel = label => {
+    if (label === 'nothing') {
+      this.setState({label: ''})
+      return
+    }
     return this.setState({label})
   }
 }

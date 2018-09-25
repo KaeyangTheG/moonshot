@@ -1,4 +1,5 @@
 import React from 'react'
+import {Subscribe} from 'unstated'
 import sharedDetectionContainer from '../../context/detection-container'
 import posed from 'react-pose'
 import {Link} from 'react-router-dom'
@@ -7,6 +8,7 @@ import predict from '../../utils/predict'
 import FullscreenPage from '../common/fullscreen'
 import {Viewfinder} from '../common/viewfinder'
 import Button from '../common/button'
+import Detector from './components/detector'
 import can from '../../assets/images/can.png'
 import '../common/common.css'
 import './scan.css'
@@ -44,10 +46,6 @@ class Scan extends React.Component {
     webcam.initialize(this.videoEl, this.canvasEl, this.predictionCanvasEl)
       .then(() => {
         this.setState({showCamera: true})
-        // setTimeout(() => {
-        //   sharedDetectionContainer.setLabel('diet_coke')
-        //     .then(this.navigateToEducate)
-        // }, 5000)
       })
       .catch(() => {
         this.props.history.push('/')
@@ -70,6 +68,7 @@ class Scan extends React.Component {
   navigateToEducate = () => this.props.history.push('/educate')
   render () {
     const { showCamera, gotIt } = this.state
+    const {label, history} = this.props
     return (
       <FullscreenPage style={{background: "#545454"}}>
         <FullscreenPage className="scan"
@@ -115,9 +114,21 @@ class Scan extends React.Component {
         <canvas style={{display: 'none'}}
           width="224" height="224"
           ref={this.setPredictionCanvasRef}></canvas>
+        {
+          gotIt &&
+            <Detector label={label} onCountDownEnd={
+              () => history.push('/educate')
+            } />
+        }
       </FullscreenPage>
     )
   }
 }
 
-export default Scan
+export default props => (
+  <Subscribe to={[sharedDetectionContainer]}>
+    {
+      ({state}) => <Scan label={state.label} {...props} />
+    }
+  </Subscribe>
+)

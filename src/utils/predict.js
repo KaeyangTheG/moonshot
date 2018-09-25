@@ -38,5 +38,9 @@ export default {
 function fetchPrediction (canvas) {
   const imageDataURL = canvas.toDataURL('image/jpeg', IMAGE_QUALITY);
   return predict(processDataUrl(imageDataURL))
-    .then(({data}) => console.log(data))
+    .then(({data}) => {
+      if (data && data.label) {
+        sharedDetectionContainer.setLabel(data.label.toLowerCase())
+      }
+    })
 }
