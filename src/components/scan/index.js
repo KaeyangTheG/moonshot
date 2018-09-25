@@ -91,7 +91,7 @@ class Scan extends React.Component {
             playsInline={true}
             muted={true}
             style={{ visibility: 'hidden', position: 'fixed' }} />
-          <Viewfinder style={{zIndex: 3}}>
+          <Viewfinder active={!!(label)} style={{zIndex: 3}}>
             <FloatingCan style={floatingCanStyle}
               pose={gotIt ? 'hidden' : 'visible'}>
               <img src={can} alt="can"

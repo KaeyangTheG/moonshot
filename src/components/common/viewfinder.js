@@ -1,10 +1,11 @@
 import React from 'react'
 import './common.css'
 
-export const Viewfinder = props => {
+export const Viewfinder = ({style={}, children, active}) => {
   return (
-    <div style={props.style || {}} className="viewfinder">
-      {props.children}
+    <div style={style}
+      className={`${active ? 'viewfinder' : 'viewfinder__active'}`}>
+      {children}
     </div>
   )
 }
