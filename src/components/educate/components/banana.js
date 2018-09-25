@@ -1,7 +1,7 @@
 import React from 'react'
 import {didYouKnowData} from '../constants'
 import {DidYouKnowItem, DidYouKnowText} from './did-you-know'
-import Banana from '../../common/banana'
+import Banana from '../../common/can'
 
 const canDidYouKnowData = didYouKnowData['banana']
 

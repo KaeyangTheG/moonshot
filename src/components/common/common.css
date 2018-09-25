@@ -46,6 +46,11 @@
   stroke-dashoffset: 167.03021240234375;
 }
 
+.can {
+  animation: dash 3s linear forwards;
+  stroke-dashoffset: 153.8154754638672;
+}
+
 @keyframes dash {
   to {
     stroke-dashoffset: 0;
