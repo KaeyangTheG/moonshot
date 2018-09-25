@@ -30,7 +30,24 @@
   transform: rotate(-90deg);
   transform-origin: center;
 }
+
 .triangle {
   width: 0;
   height: 0;
+}
+
+ .banana__top {
+  animation: dash 3s linear forwards;
+  stroke-dashoffset: -139.88418579101562;
+}
+
+.banana__bottom {
+  animation: dash 3s linear forwards;
+  stroke-dashoffset: 167.03021240234375;
+}
+
+@keyframes dash {
+  to {
+    stroke-dashoffset: 0;
+  }
 }
