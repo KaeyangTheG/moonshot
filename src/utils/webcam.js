@@ -49,7 +49,7 @@ export default {
 
       ctx.drawImage(video, sx, sy, sWidth, videoHeight, dx, dy, canvasWidth, canvasHeight);
       if (video.srcObject && video.srcObject.active) {
-        setTimeout(drawToCanvas.bind(this), 20)
+        setTimeout(drawToCanvas, 20)
       }
     }
   }

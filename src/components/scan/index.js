@@ -1,6 +1,5 @@
 import React from 'react'
-import {Subscribe} from 'unstated'
-import DetectionContainer from '../../context/detection-container'
+import sharedDetectionContainer from '../../context/detection-container'
 import posed from 'react-pose'
 import {Link} from 'react-router-dom'
 import webcam from '../../utils/webcam'
@@ -45,7 +44,7 @@ class Scan extends React.Component {
       .then(() => {
         this.setState({showCamera: true})
         setTimeout(() => {
-          this.props.setLabel('coke_zero')
+          sharedDetectionContainer.setLabel('diet_coke')
             .then(this.navigateToEducate)
         }, 5000)
       })
@@ -108,10 +107,4 @@ class Scan extends React.Component {
   }
 }
 
-export default props => (
-  <Subscribe to={[DetectionContainer]}>
-    {
-      ({setLabel}) => <Scan {...props} setLabel={setLabel} />
-    }
-  </Subscribe>
-)
+export default Scan

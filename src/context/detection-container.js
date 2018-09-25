@@ -10,4 +10,6 @@ class DetectionContainer extends Container {
   }
 }
 
-export default DetectionContainer
+const sharedDetectionContainer = new DetectionContainer()
+
+export default sharedDetectionContainer
