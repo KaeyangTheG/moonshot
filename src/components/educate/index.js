@@ -1,6 +1,7 @@
 import React from 'react'
 import {Subscribe} from 'unstated'
 import DetectionContainer from '../../context/detection-container'
+import BackBtn from '../common/back'
 import webcam from '../../utils/webcam'
 import {capitalizePhrase} from '../../utils/formatting'
 import BloomContainer from '../poses/bloom'
@@ -40,6 +41,8 @@ class Educate extends React.Component {
     const data = educateData[this.props.label]
     return (
       <div className="educate">
+        <BackBtn handleOnClick={this.props.history.goBack}
+          style={{position: 'absolute', top: '10px', left: '10px'}} />
         <div className="educate__container">
           <EducateIntro {...data} />
           {
@@ -55,6 +58,6 @@ class Educate extends React.Component {
 
 export default props => (
   <Subscribe to={[DetectionContainer]}>
-    {({state}) => <Educate label={state.detected || 'banana'} />}
+    {({state}) => <Educate label={state.detected || 'banana'} {...props} />}
   </Subscribe>
 )
