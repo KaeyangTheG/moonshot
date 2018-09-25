@@ -9,6 +9,7 @@ import {safariCheck} from '../../utils/mobile'
 import FullscreenPage from '../common/fullscreen'
 import {Viewfinder} from '../common/viewfinder'
 import Button from '../common/button'
+import BackBtn from '../common/back'
 import Detector from './components/detector'
 import can from '../../assets/images/can.png'
 import '../common/common.css'
@@ -77,6 +78,8 @@ class Scan extends React.Component {
     const VideoCanvas = isSafari ? NoOp : TranslateIn
     return (
       <FullscreenPage style={{background: "#545454"}}>
+        <BackBtn style={{position: 'absolute', top: '10px', left: '10px', zIndex: 3}}
+          handleOnClick={() => this.props.history.replace('/')} />
         <FullscreenPage className="scan"
           style={
             {
