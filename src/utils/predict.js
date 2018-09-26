@@ -1,7 +1,7 @@
 import axios from 'axios'
 import sharedDetectionContainer from '../context/detection-container'
 
-const API_INTERVAL = 700;
+const API_INTERVAL = 1000;
 const IMAGE_QUALITY = 1.0;
 
 const processDataUrl = str => (
@@ -43,7 +43,10 @@ function fetchPrediction (canvas) {
         return
       }
       if (data && data.label) {
-        sharedDetectionContainer.setLabel(data.label.toLowerCase())
+        const result = data.probability > 0.85
+          ? data.label
+          : ''
+        sharedDetectionContainer.setLabel(result.toLowerCase())
       }
     }.bind(this))
 }

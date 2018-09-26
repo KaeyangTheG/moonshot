@@ -49,19 +49,19 @@
 }
 
 .banana__top {
-  animation: banana 2s linear forwards;
-  stroke-dashoffset: -139.88418579101562;
+  animation: banana 1s linear forwards;
+  stroke-dashoffset: 139.88418579101562;
   fill: rgba(204, 255, 21, 0);
 }
 
 .banana__bottom {
-  animation: banana 2s linear forwards;
+  animation: banana 1s linear forwards;
   stroke-dashoffset: 167.03021240234375;
   fill: rgba(204, 255, 21, 0);
 }
 
 .can {
-  animation: can 2s linear forwards;
+  animation: can 1s linear forwards;
   stroke-dashoffset: 153.8154754638672;
   fill: rgba(255, 1, 1, 0);
 }

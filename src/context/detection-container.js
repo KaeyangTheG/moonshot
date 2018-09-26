@@ -7,8 +7,7 @@ class DetectionContainer extends Container {
   }
   setLabel = label => {
     if (label === 'nothing') {
-      this.setState({label: ''})
-      return
+      return this.setState({label: ''})
     }
     return this.setState({label});
   }

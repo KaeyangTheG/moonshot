@@ -56,7 +56,7 @@ class Scan extends React.Component {
     }
   }
   componentDidMount = () => {
-    sharedDetectionContainer.reset()
+    sharedDetectionContainer.setLabel('')
       .then(() => {
         webcam.initialize(this.videoEl, this.canvasEl, this.predictionCanvasEl)
           .then(() => {
@@ -129,7 +129,7 @@ class Scan extends React.Component {
                     if (isSafari) {
                       this.videoEl.play()
                     }
-                    sharedGotItContainer.setGotIt(true)
+                    sharedGotItContainer.setGotIt(!isSafari)
                     this.setState({gotIt: true})
                   }
                 } />

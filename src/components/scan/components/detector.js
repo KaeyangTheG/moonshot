@@ -6,7 +6,7 @@ import Can from '../../common/can'
 const COUNTER_INTERVAL = 1000
 
 class Detector extends React.Component {
-  state = {counter: 2}
+  state = {counter: 1}
   componentDidMount () {
     this.interval = setInterval(this.updateCounter, COUNTER_INTERVAL)
   }
