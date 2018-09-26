@@ -42,7 +42,7 @@ class Educate extends React.Component {
     return (
       <div className="educate">
         <BackBtn handleOnClick={this.props.history.goBack}
-          style={{position: 'absolute', top: '10px', left: '10px'}} />
+          style={{position: 'absolute', top: '10px', left: '10px', zIndex: 2}} />
         <div className="educate__container">
           <EducateIntro {...data} />
           {
