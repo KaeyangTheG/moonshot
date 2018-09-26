@@ -1,4 +1,5 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 import {Subscribe} from 'unstated'
 import DetectionContainer from '../../context/detection-container'
 import BackBtn from '../common/back'
@@ -14,7 +15,7 @@ import './educate.css'
 const EducateEpilogue = ({pledge}) => (
   <div className="educate__epilogue">
     <h2>{pledge}</h2>
-    <img src={logo} alt="logo" style={{width: '60%'}} />
+    <div><img src={logo} alt="logo" style={{width: '60%'}} /></div>
   </div>
 )
 
@@ -50,6 +51,10 @@ class Educate extends React.Component {
               ? <BananaBody /> : <CanBody />
           }
           <EducateEpilogue pledge={data['pledge']}/>
+          <h3 onClick={this.props.history.goBack}
+            style={{color: '#E69494'}}>
+            Try it again
+          </h3>
         </div>
       </div>
     )
