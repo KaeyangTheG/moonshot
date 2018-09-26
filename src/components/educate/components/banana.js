@@ -8,7 +8,7 @@ const canDidYouKnowData = didYouKnowData['banana']
 export default () => (
   <div>
     <div>
-      <h3>Be a compostable CHAMP!</h3>
+      <h3>Be a composting CHAMP!</h3>
       <img src={banana} alt="banana" style={{width: '40%'}} />
     </div>
     <h3>Did you know?</h3>

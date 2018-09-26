@@ -13,7 +13,7 @@ const canData = {
   instructions: `Be sure to place your
     can in a recycling bin or recycling center
     nearby.`,
-  pledge: `Help take the pledge to recycle every can you see.`,
+  pledge: `Help take the pledge to recycle every can you consume.`,
   badge: canBadge
 }
 
@@ -26,7 +26,7 @@ export const educateData = {
     label: 'Banana',
     verdict: `You can compost it!`,
     instructions: `Be sure to compost your banana in a green bin nearby.`,
-    pledge: `Help take the pledge to compost every banana you eat & see.`,
+    pledge: `Help take the pledge to compost every banana you eat.`,
     badge: bananaBadge
   }
 }
