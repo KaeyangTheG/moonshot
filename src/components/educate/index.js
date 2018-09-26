@@ -5,7 +5,7 @@ import BackBtn from '../common/back'
 import webcam from '../../utils/webcam'
 import {capitalizePhrase} from '../../utils/formatting'
 import BloomContainer from '../poses/bloom'
-import earth from '../../earth.svg'
+import logo from '../../assets/images/recycle-with-coca-cola2.png'
 import CanBody from './components/can'
 import BananaBody from './components/banana'
 import {educateData} from './constants'
@@ -14,7 +14,7 @@ import './educate.css'
 const EducateEpilogue = ({pledge}) => (
   <div className="educate__epilogue">
     <h2>{pledge}</h2>
-    <img src={earth} alt="logo" style={{width: '60%'}} />
+    <img src={logo} alt="logo" style={{width: '60%'}} />
   </div>
 )
 
