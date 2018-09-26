@@ -1,17 +1,16 @@
 import React from 'react'
 import { Logo } from '../logo'
-import earth from '../../earth.svg'
+import logo from '../../assets/images/coca-cola-logo2.png'
 import './desktop.css'
 
 export default props => {
   return (
     <div className="desktop">
-      <img src={earth} alt='earth'/>
-      <h1>{`<Cool Logo here>`}</h1>
+      <img src={logo} alt='logo'/>
       <h3 style={{width: '45%', textAlign: 'center'}}>
         {
           `This app is intended for use on your mobile device.  Please visit
-          this url on your phone to give it a go!`
+          this url on your phone to give it a try!`
         }
       </h3>
     </div>
