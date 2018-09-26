@@ -9,6 +9,7 @@ import BloomContainer from '../poses/bloom'
 import logo from '../../assets/images/recycle-with-coca-cola2.png'
 import CanBody from './components/can'
 import BananaBody from './components/banana'
+import GenericCanBody from './components/generic-can'
 import {educateData} from './constants'
 import './educate.css'
 
@@ -38,8 +39,19 @@ const EducateIntro = ({label, verdict, instructions, badge}) => {
 }
 
 class Educate extends React.Component {
+  getEducateBody = label => {
+    switch(label) {
+      case 'banana':
+        return BananaBody
+      case 'can_other':
+        return GenericCanBody
+      default:
+        return CanBody
+    }
+  }
   render () {
     const data = educateData[this.props.label]
+    const Body = this.getEducateBody(this.props.label)
     return (
       <div className="educate">
         <BackBtn handleOnClick={this.props.history.goBack}
@@ -47,10 +59,9 @@ class Educate extends React.Component {
         <div className="educate__container">
           <EducateIntro {...data} />
           {
-            this.props.label === 'banana'
-              ? <BananaBody /> : <CanBody />
+            <Body />
           }
-          <EducateEpilogue pledge={data['pledge']}/>
+          <EducateEpilogue pledge={data['pledge']} />
           <h3 onClick={this.props.history.goBack}
             style={{color: '#E69494'}}>
             Scan more items

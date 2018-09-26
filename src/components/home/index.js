@@ -83,7 +83,7 @@ export const HomeContext = ({history}) => (
   <Home animate={true}>
     <Sky />
     <FadeContainer style={{width: '50vw', paddingTop: '100px'}}>
-      <p>Help us recycle a can and bottle for every one we sell.</p>
+      <p>Help us recycle every can we sell.</p>
       <Button label="Continue" handleOnClick={
         () =>
         webcam.start()

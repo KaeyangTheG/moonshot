@@ -89,7 +89,7 @@ class Scan extends React.Component {
     return (
       <FullscreenPage style={{background: "#545454"}}>
         <BackBtn style={{position: 'absolute', top: '10px', left: '10px', zIndex: 3}}
-          handleOnClick={() => this.props.history.replace('/')} />
+          handleOnClick={() => this.props.history.push('/')} />
         <FullscreenPage className="scan"
           style={
             {
@@ -112,7 +112,7 @@ class Scan extends React.Component {
             </FloatingCan>
           </Viewfinder>
           <p style={{padding: '20px'}}>
-            Place your Coca-cola product within the frame
+            Place your can within the frame
           </p>
           {
             !gotIt &&
