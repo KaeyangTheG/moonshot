@@ -53,7 +53,7 @@ class Educate extends React.Component {
           <EducateEpilogue pledge={data['pledge']}/>
           <h3 onClick={this.props.history.goBack}
             style={{color: '#E69494'}}>
-            Try it again
+            Scan more items
           </h3>
         </div>
       </div>
