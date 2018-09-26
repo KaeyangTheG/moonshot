@@ -28,7 +28,7 @@ class Home extends React.Component {
   }
   render () {
     const { animate, imgLoaded } = this.state;
-    const {children} = this.props;
+    const {children, history} = this.props;
 
     const childrenWithProps = React.Children.map(children, child => {
       return (
@@ -36,7 +36,7 @@ class Home extends React.Component {
       )
     })
     return (
-      <FullscreenPage className="home">
+      <FullscreenPage className="home" handleOnClick={() => history.push('/mission')}>
         {
           childrenWithProps
         }
@@ -71,16 +71,17 @@ const Sky = ({style, imgLoaded}) => {
 }
 
 export const HomeLogo = ({history}) => (
-  <Home>
+  <Home history={history}>
     <Sky style={SunRise} />
     <FadeContainer style={{width: '50vw', paddingTop: '100px'}}>
-      <Logo handleOnClick={() => history.push('/mission')}/>
+      <Logo />
+      <p>Press anywhere</p>
     </FadeContainer>
   </Home>
 )
 
 export const HomeContext = ({history}) => (
-  <Home animate={true}>
+  <Home animate={true} history={history}>
     <Sky />
     <FadeContainer style={{width: '50vw', paddingTop: '100px'}}>
       <p>Help us recycle every can we sell.</p>
