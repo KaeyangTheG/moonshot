@@ -3,6 +3,7 @@ import sharedDetectionContainer from '../context/detection-container'
 
 const API_INTERVAL = 1000;
 const IMAGE_QUALITY = 1.0;
+const PROBABILITY_THRESHOLD = 0.85;
 
 const processDataUrl = str => (
   `/${str.split('/').slice(2).join('/')}`
@@ -43,7 +44,7 @@ function fetchPrediction (canvas) {
         return
       }
       if (data && data.label) {
-        const result = data.probability > 0.85
+        const result = data.probability > PROBABILITY_THRESHOLD
           ? data.label
           : ''
         sharedDetectionContainer.setLabel(result.toLowerCase())
