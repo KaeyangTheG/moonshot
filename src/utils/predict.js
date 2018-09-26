@@ -23,7 +23,7 @@ export default {
       return
     }
     this.interval = window.setInterval(
-      fetchPrediction.bind(null, canvas), API_INTERVAL
+      fetchPrediction.bind(this, canvas), API_INTERVAL
     )
   },
   stop: function () {
@@ -38,9 +38,12 @@ export default {
 function fetchPrediction (canvas) {
   const imageDataURL = canvas.toDataURL('image/jpeg', IMAGE_QUALITY);
   return predict(processDataUrl(imageDataURL))
-    .then(({data}) => {
+    .then(function ({data}) {
+      if (this.interval == null) {
+        return
+      }
       if (data && data.label) {
         sharedDetectionContainer.setLabel(data.label.toLowerCase())
       }
-    })
+    }.bind(this))
 }
